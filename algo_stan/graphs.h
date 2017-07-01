@@ -14,7 +14,7 @@
 
 class Graph{
 protected:
-    int V;			               //Number of Vertices
+    int V,E;			               //Number of Vertices
     //std::vector<int> *adj;	 //The pointer to an array containing adjacency lists
     std::vector<std::pair<int, int> > *adj;  //To store weights also
 
