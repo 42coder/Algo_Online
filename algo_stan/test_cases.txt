@@ -1,0 +1,14 @@
+# Test cases to be used
+# 1st number is the size of the array followed by the array
+# Next line is the answer
+
+
+# Counting Inversions
+5 2 4 1 3 5
+3
+5 1 20 6 4 5
+5
+4 8 4 2 1
+6
+6 1 3 5 2 4 6
+3
