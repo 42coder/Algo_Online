@@ -29,5 +29,9 @@ Also has 2 header files for some basic functions and classes used
 - minCut - Karger's Min-Cut algorithm
 - scc    - for now DFS but needs to be made into Kosaraju's 2 Pass algorithm
 
+#### Header Files
+- struct.h - Stacks, Union-Find
+- graphs.h - Graph class using vectors and pair
+
 #### Current Issues:
 - 
