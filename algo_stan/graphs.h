@@ -9,6 +9,10 @@
 #include <utility>
 #include <vector>
 
+#include <fstream>
+#include <string>
+#include <sstream>		//2 headers ust for taking inputs ????
+
 //=================================
 // directed graph using adjecency list
 
@@ -20,8 +24,9 @@ protected:
 
 public:
     Graph(int V);
-    void addEdge(int v, int w, const int wt);
+    void addEdge(int v, int w, const int wt = 1);
     void printGraph();
+    void makeAdj(const char* file = "test.txt");
 };
 
 #endif // __GRAPHS_H_INCLUDED__

@@ -36,3 +36,18 @@ void Graph::printGraph(){
         std::cout << "\n";
     }
 }
+
+void Graph::makeAdj(const char* file){
+	std::ifstream fin(file);
+
+	std::string line;
+	int num,V;
+
+	while (getline(fin, line)){
+		std::istringstream is(line);
+		is >> V;		
+		while (is >> num){
+			adj[V].push_back(std::make_pair(num, 1));
+		}
+	}
+}
