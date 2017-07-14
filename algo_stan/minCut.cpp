@@ -1,13 +1,17 @@
 #include <iostream>
-#include <fstream>
-#include "graphs.h"				//Uses the old version of graphs needs new updates
+#include <stdlib.h>
+#include "graphs.h"
+#include "struct.h"
 
 using namespace std;
 
-int minCut(struct Graph *graph){		//Using Karger's min-cut algo - a randomised algorithm
-    int V = graph->V;
-    int E = graph->E;
-    Edge *edge = graph->edge;
+class mGraph: public Graph {
+public:
+	mGraph(int V):Graph(V){};
+	int minCut();
+};
+
+int mGraph::minCut(){		//Using Karger's min-cut algo - a randomised algorithm
 
     struct subset *subsets = new subset[V];
 
@@ -19,81 +23,50 @@ int minCut(struct Graph *graph){		//Using Karger's min-cut algo - a randomised a
     int vertices = V;
 
     while (vertices > 2){
-	int i = rand() % E;
+	int i = rand() % V;			//First point
+	if (adj[i].size() == 0){
+		continue;			//To avoid divide by zero error
+	}
+	std::vector<std::pair<int, int> >::iterator k;
+	k = adj[i].begin() + rand() % adj[i].size();	//gotta think of some other way
+	int j = k->first;			 //Second point
 
-	int root1 = find(subsets, edge[i].src);
-        int root2 = find(subsets, edge[i].dest);
+	int root1 = find(subsets, i);
+        int root2 = find(subsets, j);
 
         if (root1 != root2){
-	    cout << "Contracting edge " << edge[i].src << "-" << edge[i].dest << endl;
+	    //cout << "Contracting edge " << i << "-" << j << endl;
 	    Union(subsets, root1, root2);
 	    vertices--;
 	}
+
+	cout << "yo";
     }
 
     int cutedges = 0;
-    for (int i=0; i<E; i++)				//To find minCut
+    for (int i=0; i<V; i++)				//To find minCut
     {
-        int subset1 = find(subsets, edge[i].src);
-        int subset2 = find(subsets, edge[i].dest);
-        if (subset1 != subset2)
-          cutedges++;
+        int subset1 = find(subsets, i);
+        std::vector<std::pair<int, int> >::iterator j;
+	for (j = adj[i].begin(); j!=adj[i].end(); j++){
+            int subset2 = find(subsets, j->first);
+            if (subset1 != subset2)
+                cutedges++;
+	}
     }
 
-    return cutedges;
+    return cutedges/2;					//as to make an undirected graph I am using 2 directed edges
 }
 
-/*int main(){						// gfg example
-    /* Let us create following unweighted graph
-        0------1
-        | \    |
-        |   \  |
-        |     \|
-        2------3
-    int V = 4;  // Number of vertices in graph
-    int E = 5;  // Number of edges in graph
-    struct Graph* graph = createGraph(V, E);
+int main(){						// gfg example
 
-    // add edge 0-1
-    graph->edge[0].src = 0;
-    graph->edge[0].dest = 1;
+    mGraph graph(25);
+    graph.makeAdj();
 
-    // add edge 0-2
-    graph->edge[1].src = 0;
-    graph->edge[1].dest = 2;
-
-    // add edge 0-3
-    graph->edge[2].src = 0;
-    graph->edge[2].dest = 3;
-
-    // add edge 1-3
-    graph->edge[3].src = 1;
-    graph->edge[3].dest = 3;
-
-    // add edge 2-3
-    graph->edge[4].src = 2;
-    graph->edge[4].dest = 3;
+    //graph.printGraph();
 
     // Use a different seed value for every run.
     srand(time(NULL));
-
-   cout << "\nCut found by Karger's randomized algo is " << minCut(graph) << endl;
-   return 0;
-}*/
-
-int main(){
-    ifstream fin("kargerMinCut.txt");
-    //int V = 4, E = 10000, i = 0, node;		//Figure out a way to overcome this
-    //struct Graph *graph = createGraph(V,E);
-
-    std::string line;
-    std::vector< std::vector<int> > all_integers;
-    while ( getline( std::cin, line ) ) {
-        std::istringstream is( line );
-        all_integers.push_back(std::vector<int>( std::istream_iterator<int>(is), std::istream_iterator<int>() ) );
-    }
-    for(int n : v) {
-        std::cout << n << '\n';
-    }
+    cout << "Cut found by Karger's randomized algo is " << graph.minCut() << endl;
     return 0;
 }

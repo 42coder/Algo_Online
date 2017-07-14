@@ -47,7 +47,7 @@ void Graph::makeAdj(const char* file){
 		std::istringstream is(line);
 		is >> V;		
 		while (is >> num){
-			adj[V].push_back(std::make_pair(num, 1));
+			adj[V-1].push_back(std::make_pair(num, 1));
 		}
 	}
 }

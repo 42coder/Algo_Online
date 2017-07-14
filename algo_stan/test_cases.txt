@@ -1,7 +1,8 @@
 # Test cases to be used
+
+
 # 1st number is the size of the array followed by the array
 # Next line is the answer
-
 
 # Counting Inversions
 5 2 4 1 3 5
@@ -12,3 +13,15 @@
 6
 6 1 3 5 2 4 6
 3
+
+
+# 1st number is the number of vertices followed by adjacency list
+# Last is the answer
+
+# Karger's Min Cut
+4
+0 1 2 3
+1 0 3
+2 0 3
+3 0 1 2
+2
