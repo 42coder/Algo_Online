@@ -15,7 +15,7 @@ Graph::Graph(int V)
     adj = new std::vector<std::pair<int, int> >[V];
 }
 
-void Graph::addEdge(int v, int u, const int wt=1)
+void Graph::addEdge(int v, int u, const int wt)
 {                                               // // // Check if the edge is already there ?
     adj[u].push_back(std::make_pair(v, wt));
     adj[v].push_back(std::make_pair(u, wt));   //For undirected graphs
