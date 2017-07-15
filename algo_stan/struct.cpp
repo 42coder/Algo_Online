@@ -31,18 +31,19 @@ int Stack::pop(){
     return num;
 }
 
-/*void Stack::stackPrint(){
+void Stack::stackPrint(){
     Node *temp;
     temp = top;
     while (temp != NULL){
-	std::cout << temp->val;	//Needs iostream
+	std::cout << temp->val << " ";	//Needs iostream
 	temp = temp->next;
     }
-}*/
+    std::cout << std::endl;
+}
 
 int Stack::status(){
-    if (top == NULL){return 0;}
-    else {return 1;}
+    if (top == NULL){return -1;}
+    else {return top->val;}
 }
 
 

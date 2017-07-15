@@ -22,6 +22,7 @@ public:
     void push(int num);
     int pop();
     int status();
+    void stackPrint();
 };
 
 //=================================

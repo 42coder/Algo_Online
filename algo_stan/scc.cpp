@@ -1,47 +1,57 @@
 #include <iostream>
 #include <stdlib.h>
-#include <list>             	//change list to vector
+#include <fstream>
+#include <vector>
 #include <time.h>
-#include "struct.h"	 	//Use old ver
-#include "graphs.h"		//Use old ver
+#include "struct.h"
+#include "graphs.h"
 
 using namespace std;
 
 class scc : public Graph {
+    bool *visited;
 public:
-    scc(int V):Graph(V){};			//As we have inhereted the class Graph
-    void dfsUtil(int i, bool visit[]);
+    scc(int V):Graph(V){
+        visited = new bool(V);
+    };					//As we have inhereted the class Graph
+    void dfsUtil(int v);
     void dfs();
 };
 
 void scc::dfs(){
-    bool *visit = new bool(V);
     for (int i=0; i<V; i++){
-	visit[i] = false;
+	visited[i] = false;
     }
     for (int i=0;i<V; i++){
-    	if (visit[i] == false){
-	    dfsUtil(i,visit);
+    	if (visited[i] == false){
+	    dfsUtil(i);
 	}
     }
 }
 
-void scc::dfsUtil(int v, bool visited[]){
+void scc::dfsUtil(int v){
     visited[v] = true;
     Stack stack;
     stack.push(v);
-
+    bool flag = false;
+    cout << v << " ";
     do{
-	int v = stack.pop();
-	cout << v << " ";
-        list<int>::iterator i;
-        for(i = adj[v].begin(); i != adj[v].end(); ++i){
-            if(!visited[*i]){
-                visited[*i] = true;
-		stack.push(*i);
+	vector< pair<int,int> >::iterator i;
+	for (i = adj[v].begin(); i < adj[v].end(); i++){
+	    if (visited[i->first] == false){
+                visited[i->first] = true;
+                stack.push(i->first);
+		cout << i->first << " ";
+		flag = true;
+		break;
 	    }
-        }
-    }while(stack.status());
+	}
+	if (flag == false){
+	    stack.pop();
+	}
+        v = stack.status();
+	flag = false;
+    }while(v != -1);
 
 /*// Mark the current node as visited and print it - gfg
     visited[v] = true;
@@ -56,17 +66,19 @@ void scc::dfsUtil(int v, bool visited[]){
 
 
 int main(){
-    scc g(6);
-    g.addEdge(0, 1);
-    g.addEdge(0, 2);
-    g.addEdge(1, 2);
-    //g.addEdge(2, 0);
-    g.addEdge(2, 3);
-    g.addEdge(1, 4);
-    g.addEdge(4, 5);
-    g.addEdge(3, 4);
-    //g.addEdge(3, 3);
+    ifstream fin("test.txt");
+
+    int a,b;
+    fin >> a;			//Number of vertices
+    scc g(a);
+
+    while (fin >> a){		//Build graph
+	fin >> b;
+	g.addEdge(a,b);
+    }
+
     cout << "Following is Depth First Traversal\n";
     g.dfs();
+    cout << endl;
     return 0;
 }
