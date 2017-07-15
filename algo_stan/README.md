@@ -25,13 +25,16 @@ Consist of the code that I tried making for the course
 Also has 2 header files for some basic functions and classes used
 
 #### Legend & Notes:
-- dShort - Dijkstra Shortest Path algorithm
+- dShort - Dijkstra's Shortest Path algorithm
 - minCut - Karger's Min-Cut algorithm
-- scc    - for now DFS but needs to be made into Kosaraju's 2 Pass algorithm
+- scc - Kosaraju's 2 Pass algorithm
+- kmul - Karatsuba Multiplication
 
 #### Header Files
 - struct.h - Stacks, Union-Find
 - graphs.h - Graph class using vectors and pair
 
 #### Current Issues:
-- 
+- minCut - sometimes Segmentation fault and sometimes wrong output
+- scc - for now DFS but needs to be made into Kosaraju's 2 Pass algorithm
+- kmul - write a c++ program for it
