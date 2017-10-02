@@ -7,5 +7,5 @@ It is essentially a backup but you are free to add stuff to it.
 
 This includes:
 
-- algo_stan: Algorithms by Stanford (also called "Learn To Think Like A Computer Scientist") on Coursera
+- [algostan](algo_stan/README.md): Algorithms by Stanford (also called "Learn To Think Like A Computer Scientist") on Coursera
 

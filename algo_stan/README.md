@@ -24,6 +24,7 @@ Consist of the code that I tried making for the course
 
 Also has 2 header files for some basic functions and classes used
 
+A GitHub repository of test cases can be found from [here](https://github.com/beaunus/stanford-algs)
 #### Legend & Notes:
 - dShort - Dijkstra Shortest Path algorithm
 - minCut - Karger's Min-Cut algorithm
