@@ -20,11 +20,8 @@ and their applications.
 - Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
 
 ## About the Code
-NEED TO SORT OUT A LOT OF THINGS IN THE CODE DUE TO MULTIPLE VERSIONS OF DIFFERENT HEADER FILES
-
 Consist of the code that I tried making for the course
-
-Also has 2 header files for some basic functions and classes used
+Also has header files for some basic functions and classes used
 
 A GitHub repository of test cases can be found from [here](https://github.com/beaunus/stanford-algs)
 #### Legend & Notes:
@@ -32,12 +29,15 @@ A GitHub repository of test cases can be found from [here](https://github.com/be
 - minCut - Karger's Min-Cut algorithm
 - scc - Kosaraju's 2 Pass algorithm
 - kmul - Karatsuba Multiplication
+- dfs - Depth First Search
 
 #### Header Files
-- struct.h - Stacks, Union-Find
-- graphs.h - Graph class using vectors and pair
+- struct.h - Stacks, Union-Find (for c++)
+- graphs.h - Graph class using vectors and pair (for c++)
+- cgraphs.h - Graph representations (for c)
 
 #### Current Issues:
 - minCut - sometimes Segmentation fault and sometimes wrong output
 - scc - a really ugly code that gives Segmentation Faults
 - kmul - write a c++ program for it
+- Due to multiple rewrites of the c++ header files lot of the c++ programs are currently broken
