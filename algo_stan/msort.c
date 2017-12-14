@@ -19,6 +19,7 @@ int main(){
     for (int i=0; i<size; i++)  scanf("%d\n", &num_array[i]);
 
     sort(num_array, 0, size-1, size);
+    return 0;
 }
 
 void sort(int arr[], int l, int r, int size){
