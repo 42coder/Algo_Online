@@ -18,7 +18,7 @@ struct adjList{
 };
 
 struct graph{
-    int V,E;
+    int V;
     struct adjList *array;
 };
 
@@ -73,7 +73,6 @@ int main(){
 struct graph *createGraph(int V){
     struct graph *g = (struct graph*)malloc(sizeof(struct graph));
     g->V = V;
-    g->E = 0;
     g->array = (struct adjList*)malloc(V*sizeof(struct graph));
 
     for (int i=0; i<V; i++)
