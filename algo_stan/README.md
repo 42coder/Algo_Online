@@ -20,6 +20,8 @@ and their applications.
 - Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
 
 ## About the Code
+NEED TO SORT OUT A LOT OF THINGS IN THE CODE DUE TO MULTIPLE VERSIONS OF DIFFERENT HEADER FILES
+
 Consist of the code that I tried making for the course
 
 Also has 2 header files for some basic functions and classes used
