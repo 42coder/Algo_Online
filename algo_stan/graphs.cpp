@@ -17,7 +17,7 @@ Graph::Graph(int V)
 
 void Graph::addEdge(int v, int u, const int wt)
 {                                               // // // Check if the edge is already there ?
-    adj[u].push_back(std::make_pair(v, wt));
+    //adj[u].push_back(std::make_pair(v, wt));
     adj[v].push_back(std::make_pair(u, wt));   //For undirected graphs
     E++;
 }
@@ -37,7 +37,7 @@ void Graph::printGraph(){
     }
 }
 
-void Graph::makeAdj(const char* file){
+void Graph::makeAdj(const char* file){			//May be broken
 	std::ifstream fin(file);
 
 	std::string line;
